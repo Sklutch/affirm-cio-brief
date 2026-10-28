@@ -94,3 +94,15 @@ dd{margin:0;font-size:.9rem;color:#2c313a}
  .cal .ev{font-size:.58rem;word-break:break-word}
 }
 @media print{body{background:#fff}section{break-inside:avoid;border:0}.toc{display:none}}
+/* static data tables and new analysis blocks */
+details.data{margin-top:12px}
+details.data summary{cursor:pointer;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+details.data .tw{margin-bottom:0}
+details.data table{font-size:.84rem}
+caption{caption-side:top;text-align:left;padding:9px 12px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
+.table-title{font-size:.88rem;font-weight:600;color:var(--muted);margin:18px 0 8px}
+.panel-title{font-weight:600;margin:4px 0 8px}
+.case-panel[hidden]{display:none}
+td.pos{font-weight:600}
+table.wide{min-width:820px}
+table.wide td:first-child{min-width:200px}
