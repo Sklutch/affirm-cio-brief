@@ -70,15 +70,4 @@
       x:{grid:{display:false},ticks:{autoSkip:true,maxRotation:0,autoSkipPadding:10}}},
       plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return (c.raw>0?"+":"")+c.raw.toFixed(1)+"%";}}}}}
   });
-
-  var TOR=[["Beta / cost of equity: 2.2 vs 3.2 (±0.5; CoE 14.2% vs 18.4%)", 42.9, 64.8], ["Terminal operating margin: 17.5% vs 27.5%", 41.1, 62.7], ["FY28–29 growth: 20% vs 30% (same FY36 endpoint)", 44.8, 60.2], ["Equity risk premium: 3.7% vs 4.7%", 45.7, 59.6], ["FY36 growth endpoint: 8% vs 16%", 46.8, 57.8], ["Risk-free rate: 4.49% vs 5.49%", 47.2, 54.5], ["FY27 revenue: −5% vs +5%", 49.7, 54.0], ["Reinvestment per $ of revenue growth: −25% vs +25%", 50.1, 53.7], ["Terminal growth: 2% vs 4%", 50.5, 53.4]], BASE=51.9;
-  new Chart(document.getElementById("tornadoChart"), {
-    type:"bar",
-    data:{labels:TOR.map(function(r){return r[0];}),
-      datasets:[{label:"Value range ($/share)",data:TOR.map(function(r){return [r[1],r[2]];}),backgroundColor:BLUE,borderRadius:2,barPercentage:.7}]},
-    options:{indexAxis:"y",scales:{x:{min:35,max:75,grid:{color:function(c){return c.tick.value===BASE?"#aab0bb":GRID;}},ticks:{callback:function(v){return "$"+v;}}},
-      y:{grid:{display:false},ticks:{font:{size:11},callback:function(v,i){var s=TOR[i][0];return s.length>34?s.slice(0,33)+"…":s;}}}},
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return "$"+c.raw[0].toFixed(1)+" to $"+c.raw[1].toFixed(1)+" (swing $"+(c.raw[1]-c.raw[0]).toFixed(1)+")";}}}}},
-    plugins:[{id:"baseLine",afterDatasetsDraw:function(ch){var x=ch.scales.x.getPixelForValue(BASE),A=ch.chartArea,ctx=ch.ctx;ctx.save();ctx.strokeStyle=RED;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(x,A.top);ctx.lineTo(x,A.bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=RED;ctx.font="600 11px "+Chart.defaults.font.family;ctx.fillText("Base $"+BASE.toFixed(1),x+4,A.top+10);ctx.restore();}}]
-  });
 })();
